@@ -71,6 +71,14 @@ if [[ $PUSHBULLET_DEFAULT_EMAIL ]]; then
 	sed -i -e "s#DEFAULT_RECIPIENT_PUSHBULLET=\"\"#DEFAULT_RECIPIENT_PUSHBULLET=\"${PUSHBULLET_DEFAULT_EMAIL}\"#" /etc/netdata/health_alarm_notify.conf
 fi
 
+if [[ $ROCKETCHAT_WEBHOOK_URL ]]; then
+	sed -i -e "s@ROCKETCHAT_WEBHOOK_URL=\"\"@ROCKETCHAT_WEBHOOK_URL=\"${ROCKETCHAT_WEBHOOK_URL}\"@" /etc/netdata/health_alarm_notify.conf
+fi
+
+if [[ $DEFAULT_RECIPIENT_ROCKETCHAT ]]; then
+	sed -i -e "s@DEFAULT_RECIPIENT_ROCKETCHAT=\"\"@DEFAULT_RECIPIENT_ROCKETCHAT=\"${DEFAULT_RECIPIENT_ROCKETCHAT}\"@" /etc/netdata/health_alarm_notify.conf
+fi
+
 if [[ $NETDATA_IP ]]; then
 	NETDATA_ARGS="${NETDATA_ARGS} -i ${NETDATA_IP}"
 fi
